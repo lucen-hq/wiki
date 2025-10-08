@@ -1,0 +1,51 @@
+# Organisaion GitOps Standards 
+(Flux + Kustomize + Flagger)
+
+Goal: Standardize continuous integration & deployment using Flux, Kustomize, and Flagger, with clear separation of concerns.
+
+Repository Structure
+1. `[app]` — Application Code
+    - Source code + Dockerfile + CI pipeline.
+    - Builds Docker images on release/tag.
+    - Optional preview deployments for dev/staging.
+    - Kustomize base only; no env-specific overlays.
+```
+[app]/
+├── src/
+├── Dockerfile
+├── .gitlab-ci.yml
+├── k8s/base/
+```
+
+2. `[app]-deployment` — Environment Overlays
+    - Holds Kustomize overlays: dev, staging, canary, prod.
+    - Flux applies overlays; (TOOD: ImageUpdateController updates image tags automatically for non-prod.)
+    - Production promotion is manual via PR.
+    - Flagger defines canary rollouts.
+
+```
+[app]-deployment/
+├── overlays/dev|staging|canary|prod/
+├── flux/kustomization.yaml
+├── flux/imagepolicy.yaml
+├── flux/imageupdateautomation.yaml
+```
+3. `[app]-infra` — App Infrastructure
+    - Manages app-specific infra (queues, storage).
+    - Declarative manifests applied via Flux.
+
+```
+[app]-infra/
+├── terraform/ or k8s/
+```
+4. `[tool]-addon` — Cluster Enhancements
+    - Manages shared cluster addons (metrics, logging, RBAC).
+    - Applied via Flux globally.
+
+## Key Principles
+- GitOps first: Flux is source of truth; no manual kubectl apply.
+- Build once, deploy everywhere: Images built in [app], promoted through [app]-deployment.
+- (TODO) Automate non-prod deployments: Dev/staging/canary updated automatically.
+- Manual prod promotion: Only after canary/staging validation.
+- Progressive delivery: Use Flagger for safe rollouts.
+- Avoid duplication: Shared resources live in `[tool]-addon` or platform repos.
