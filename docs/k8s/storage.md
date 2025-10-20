@@ -1,0 +1,22 @@
+# Storage
+
+## Raw Block Storage
+
+For Raw unreplicated Block Storage, _TopoLVM_ should be used.
+It is a unreplicated, not distributed block storage.
+TopoLVM is used because of high performance and low latency.
+It is suitable for applications that require high IOPS and low latency, such as databases that handle replication themselves such as CNPG or Cassandra.
+
+### Requirements
+
+- [TopoLVM Docu](https://github.com/topolvm/topolvm/blob/main/docs/getting-started.md)
+- `Cert-Manager` installed on the cluster
+- LVM installed on all nodes
+- A volume group named `topolvm` created on all nodes
+
+## Replicated Distributed Storage
+
+For Replicated Distributed Storage, _Rook-Ceph_ should be used.
+It provides a highly available and fault-tolerant storage solution.
+Rook-Ceph provides block, file, and object storage.
+It should be used in places where data redundancy and high availability are required such Database-Backups, GitLab, Databases that don't replicate themselves.
