@@ -1,0 +1,11 @@
+# Identity Provider Standard
+
+Authentication, Authorization and User Management.
+
+For authentication and Authorization the OIDC protocol is used.
+
+Only Zitadel(preferred) and Keycloack is permitted as an identity provider.
+
+Zitadel allows to quick move to a hosted solution in the future if needed.
+
+Usage with terrafrorm is preferred.
