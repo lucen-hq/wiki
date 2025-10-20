@@ -15,5 +15,17 @@ For frontend development the following programming languages are permitted:
   - React
   - Vite
   - Tanstack Router
+  - Tanstack Query
   - See template repository for more details
 - Dart (Flutter)
+
+Strictly Perhibited:
+
+- Python
+  - Not allowed for servers nor scripts.
+
+- Javascript
+  - Not allwed for servers, scripts or frontend.
+
+- NodeJS
+  - There should be no javascript running on the server.
