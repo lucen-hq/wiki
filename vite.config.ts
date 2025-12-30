@@ -6,7 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from 'fumadocs-mdx/vite';
 
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/wiki/' : '/',
+  base: process.env.VITE_BASE_PATH || '/',
   server: {
     port: 3000,
   },
@@ -25,7 +25,9 @@ export default defineConfig({
           crawlLinks: true,
         },
       },
-
+      sitemap: {
+        host: process.env.SITEMAP_HOST || 'https://tom-ludwig.github.io/wiki',
+      },
       pages: [
         {
           path: '/docs',
