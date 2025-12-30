@@ -6,6 +6,7 @@ import tailwindcss from '@tailwindcss/vite';
 import mdx from 'fumadocs-mdx/vite';
 
 export default defineConfig({
+  base: process.env.NODE_ENV === 'production' ? '/wiki/' : '/',
   server: {
     port: 3000,
   },
