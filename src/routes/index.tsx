@@ -10,37 +10,37 @@ export const Route = createFileRoute('/')({
 const quickLinks = [
   {
     title: 'Programming Languages',
-    href: '/docs/programming-languages',
+    path: 'programming-languages',
     icon: Code,
     description: 'Backend and frontend development standards',
   },
   {
     title: 'Databases',
-    href: '/docs/databases',
+    path: 'databases',
     icon: Database,
     description: 'Data storage and database selection',
   },
   {
     title: 'GitOps Standards',
-    href: '/docs/gitops-standards',
+    path: 'gitops-standards',
     icon: GitBranch,
     description: 'CI/CD with Flux, Kustomize, and Flagger',
   },
   {
     title: 'Identity Provider',
-    href: '/docs/identity-provider',
+    path: 'identity-provider',
     icon: Shield,
     description: 'Authentication and authorization standards',
   },
   {
     title: 'CNI Standard',
-    href: '/docs/k8s/cni',
+    path: 'k8s/cni',
     icon: Network,
     description: 'Kubernetes networking standards',
   },
   {
     title: 'Storage',
-    href: '/docs/k8s/storage',
+    path: 'k8s/storage',
     icon: HardDrive,
     description: 'Kubernetes storage solutions',
   },
@@ -81,8 +81,11 @@ function Home() {
               const Icon = link.icon;
               return (
                 <Link
-                  key={link.href}
-                  to={link.href}
+                  key={link.path}
+                  to="/docs/$"
+                  params={{
+                    _splat: link.path,
+                  }}
                   className="group p-6 rounded-lg border border-fd-border bg-fd-card hover:bg-fd-accent hover:border-fd-primary/50 transition-all duration-200"
                 >
                   <div className="flex items-start gap-4">
