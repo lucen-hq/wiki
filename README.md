@@ -1,5 +1,8 @@
 # wiki
 
+> [!WARNING]
+> MOVED TO GITHUB
+
 This is a Wiki build with Tanstack Start and [Fumadocs](https://github.com/fuma-nama/fumadocs).
 
 ## Development
@@ -29,4 +32,5 @@ This project includes a GitHub Actions workflow that automatically builds and de
 3. **Manual deployment**: You can also trigger the workflow manually from the Actions tab
 
 Your documentation will be available at:
+
 - `https://<username>.github.io/<repository-name>/` (if not using a custom domain)
