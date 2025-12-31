@@ -1,18 +1,22 @@
 ---
 title: Identity Provider Standard
 description: Authentication, Authorization and User Management standards
-icon: Shield
 ---
 
 # Identity Provider Standard
 
 Authentication, Authorization and User Management.
 
+::: info Protocol
 For authentication and Authorization the OIDC protocol is used.
+:::
 
-Only Zitadel(preferred) and Keycloack is permitted as an identity provider.
+::: tip Permitted Providers
+Only **Zitadel** (preferred) and **Keycloak** is permitted as an identity provider.
 
 Zitadel allows to quick move to a hosted solution in the future if needed.
+:::
 
-Usage with terrafrorm is preferred.
-
+::: tip Infrastructure
+Usage with Terraform is preferred.
+:::
